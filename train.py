@@ -59,7 +59,9 @@ def main():
         AsyncOpenAI(
             api_key=openai_config["api_key"],
             base_url=openai_config["base_url"],
-        )
+        ),
+        gradient_model=model_name,
+        apply_edit_model=model_name,
     )
     trainer = agl.Trainer(
         algorithm=algo,

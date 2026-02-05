@@ -16,7 +16,7 @@ def llm_judge(question, entities, output_json, goal):
     openai_config = get_openai_config()
     client = OpenAI(
         api_key=openai_config["api_key"],
-        base_url=openai_config["base_url"],
+        base_url=openai_config["base_url"]
     )
     prompt = (
         "你是评分器。\n"
