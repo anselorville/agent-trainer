@@ -1,4 +1,4 @@
 agentlightning[apo]
-openai
+openai==2.8.0
 pyyaml
 python-dotenv
