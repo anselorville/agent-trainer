@@ -63,6 +63,7 @@ def main():
     )
     trainer = agl.Trainer(
         algorithm=algo,
+        strategy="shm",
         initial_resources={
             "prompt_template": agl.PromptTemplate(
                 template=config["prompt_template"],

@@ -25,23 +25,23 @@ prompt_template: |
   - report_period/forecast_horizon/query_hint 不进入 publishDate filter
   - 只有明确“发布/披露/公告/发表/发布于”等语义时，才允许进入 publishDate
   ## 输出 JSON
-  {
-    "entities": {
-      "finance_entity": [{"name":"","codes":[],"role":""}],
-      "person": [{"name":"","role":""}],
-      "time": [{"text":"","role":""}]
-    },
+  {{
+    "entities": {{
+      "finance_entity": [{{"name":"","codes":[],"role":""}}],
+      "person": [{{"name":"","role":""}}],
+      "time": [{{"text":"","role":""}}]
+    }},
     "query_terms": [],
-    "filters": {
+    "filters": {{
       "financeEntity": [],
       "publishAgency": [],
       "author": [],
-      "publishDate": {"start":"","end":""}
-    }
-  }
+      "publishDate": {{"start":"","end":""}}
+    }}
+  }}
   ## 输入
-  用户问句: {question}
-  已识别实体: {disambiguated_entities}
+  用户问句: {{question}}
+  已识别实体: {{disambiguated_entities}}
   只输出 JSON，不要解释。
 output_schema: entity_filter_v1
 eval_mode: llm
