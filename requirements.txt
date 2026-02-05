@@ -1,0 +1,4 @@
+agentlightning[apo]
+openai
+pyyaml
+python-dotenv

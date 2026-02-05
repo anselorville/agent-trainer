@@ -1,0 +1,47 @@
+node_id: entity_filter
+goal: >
+  判定 finance_entity/person/time 的角色并构建 ES query/filter。
+  finance_entity: query_subject 或 publish_agency。
+  person: author 或 query_subject。
+  time: report_period | forecast_horizon | publish_date | query_hint。
+  只有明确“发布/披露/公告/发表/发布于”等语义时允许 publish_date 进入 publishDate。
+prompt_template: |
+  你是金融检索中的“实体角色判定与过滤构建”专家。根据用户问句和已识别实体，输出结构化 JSON，用于构建 Elasticsearch 的 query 与 filter。
+  ## 约束
+  1) 任何被输出为关键词/实体的字符串都必须在原问句中出现（允许少量标点差异）
+  2) 输出必须是合法 JSON，且字段齐全
+  3) 不能新增问句中未出现的实体
+  ## 实体角色
+  finance_entity: 上市公司/金融机构主体与证券代码
+  - role = "query_subject" 或 "publish_agency"
+  - 若为 query_subject：加入 query_terms，同时 codes 进入 filters.financeEntity
+  - 若为 publish_agency：只进 filters.publishAgency
+  person: 人物实体
+  - role = "author" 或 "query_subject"
+  - author -> filters.author
+  - query_subject -> query_terms
+  time: 时间表达
+  - role = "report_period" | "forecast_horizon" | "publish_date" | "query_hint"
+  - report_period/forecast_horizon/query_hint 不进入 publishDate filter
+  - 只有明确“发布/披露/公告/发表/发布于”等语义时，才允许进入 publishDate
+  ## 输出 JSON
+  {
+    "entities": {
+      "finance_entity": [{"name":"","codes":[],"role":""}],
+      "person": [{"name":"","role":""}],
+      "time": [{"text":"","role":""}]
+    },
+    "query_terms": [],
+    "filters": {
+      "financeEntity": [],
+      "publishAgency": [],
+      "author": [],
+      "publishDate": {"start":"","end":""}
+    }
+  }
+  ## 输入
+  用户问句: {question}
+  已识别实体: {disambiguated_entities}
+  只输出 JSON，不要解释。
+output_schema: entity_filter_v1
+eval_mode: llm
