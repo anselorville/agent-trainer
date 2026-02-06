@@ -1,1 +1,6 @@
+{"question":"今天阿里的新闻","disambiguated_entities":{"enterprise":[{"name":"阿里巴巴","codes":["9988.HK","BABA.N"]}],"person":[],"time":[]}}
+{"question":"关于今天阿里的新闻","disambiguated_entities":{"enterprise":[{"name":"阿里巴巴","codes":["9988.HK","BABA.N"]}],"person":[],"time":[{"text":"今天"}]}}
+{"question":"中金关于阿里买入评级的研究","disambiguated_entities":{"enterprise":[{"name":"阿里巴巴","codes":["9988.HK","BABA.N"]},{"name":"中金公司","codes":["3908.HK"]}],"person":[],"time":[]}}
 {"question":"贵州茅台2024年年报","disambiguated_entities":{"enterprise":[{"name":"贵州茅台","codes":["600519.SH"]}],"person":[],"time":[{"text":"2024年"}]}}
+{"question":"元旦之后钟才平发表的文章","disambiguated_entities":{"enterprise":[],"person":[{"name":"钟才平"}],"time":[{"text":"元旦之后"}]}}
+{"question":"东方证券关于AI液冷和谷歌液冷的观点","disambiguated_entities":{"enterprise":[{"name":"东方证券","codes":["600958.SH"]},{"name":"谷歌","codes":["GOOGL"]}],"person":[],"time":[]}}
