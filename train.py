@@ -1,18 +1,58 @@
 import argparse
 import json
+import os
 
 from openai import AsyncOpenAI
 import yaml
 
 import agentlightning as agl
 
-from agents.entity_filter import entity_filter_agent
+from src.agents.entity_filter import entity_filter_agent
+from src.client.openai_httpx import build_async_httpx_client
 from config import get_openai_config
+
+openai_config = get_openai_config()
+OPTIMIZER_BASE_URL = openai_config["base_url"]
+OPTIMIZER_API_KEY = openai_config["api_key"]
+OPTIMIZER_MODEL = "glm-4.7"
+
+ROLLOUT_BASE_URL = "http://10.100.167.61:7890/v1"
+ROLLOUT_API_KEY = ""
+ROLLOUT_MODEL = "wind-alice"
+
+
+def _normalize_sample(item):
+    if "input" in item and isinstance(item["input"], dict):
+        inp = item["input"]
+        question = inp.get("question") or item.get("question")
+        entities = inp.get("entities") or item.get("entities")
+        normalized = {}
+        if question is not None:
+            normalized["question"] = question
+        if entities is not None:
+            normalized["entities"] = entities
+        if "human_score" in item:
+            normalized["human_score"] = item["human_score"]
+        if "gold" in item and item["gold"] is not None:
+            normalized["gold"] = item["gold"]
+        elif "output" in item and item["output"] is not None:
+            normalized["gold"] = item["output"]
+        if "gold_struct" in item and item["gold_struct"] is not None:
+            normalized["gold_struct"] = item["gold_struct"]
+        elif "format_output" in item and item["format_output"] is not None:
+            normalized["gold_struct"] = item["format_output"]
+        return normalized
+
+    if "gold" not in item and "output" in item:
+        item["gold"] = item["output"]
+    if "gold_struct" not in item and "format_output" in item:
+        item["gold_struct"] = item["format_output"]
+    return item
 
 
 def load_jsonl(path):
     with open(path, "r", encoding="utf-8") as file:
-        return [json.loads(line) for line in file if line.strip()]
+        return [_normalize_sample(json.loads(line)) for line in file if line.strip()]
 
 
 def load_config(path):
@@ -20,48 +60,55 @@ def load_config(path):
         return yaml.safe_load(file)
 
 
-def build_dataset(dataset, goal, eval_mode, model):
+def build_dataset(dataset, goal, eval_mode, model, base_url, api_key):
     for item in dataset:
         item["goal"] = goal
         item["eval_mode"] = eval_mode
         item["model"] = model
+        item["model_base_url"] = base_url
+        item["model_api_key"] = api_key
     return dataset
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--node", default="entity_filter")
-    parser.add_argument("--model")
+    parser.add_argument("--model", default="wind-alice")
     args = parser.parse_args()
 
-    config_path = f"configs/nodes/{args.node}.yaml"
-    train_path = f"datasets/{args.node}/train.jsonl"
-    val_path = f"datasets/{args.node}/val.jsonl"
+    config_path = f"src/configs/nodes/{args.node}.yaml"
+    train_path = f"src/datasets/{args.node}/train.jsonl"
+    val_path = f"src/datasets/{args.node}/val.jsonl"
 
     config = load_config(config_path)
-    openai_config = get_openai_config()
-    model_name = args.model or openai_config["model_name"]
+   
+    rollout_model = args.model
 
     train_ds = build_dataset(
         load_jsonl(train_path),
         config["goal"],
         config.get("eval_mode", "llm"),
-        model_name,
+        rollout_model,
+        ROLLOUT_BASE_URL,
+        ROLLOUT_API_KEY,
     )
     val_ds = build_dataset(
         load_jsonl(val_path),
         config["goal"],
         config.get("eval_mode", "llm"),
-        model_name,
+        rollout_model,
+        ROLLOUT_BASE_URL,
+        ROLLOUT_API_KEY,
     )
 
     algo = agl.APO(
         AsyncOpenAI(
-            api_key=openai_config["api_key"],
-            base_url=openai_config["base_url"],
+            api_key=OPTIMIZER_API_KEY,
+            base_url=OPTIMIZER_BASE_URL,
+            http_client=build_async_httpx_client(),
         ),
-        gradient_model=model_name,
-        apply_edit_model=model_name,
+        gradient_model=OPTIMIZER_MODEL,
+        apply_edit_model=OPTIMIZER_MODEL,
     )
     trainer = agl.Trainer(
         algorithm=algo,
