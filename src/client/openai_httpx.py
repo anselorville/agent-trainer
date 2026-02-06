@@ -21,19 +21,19 @@ def build_async_httpx_client() -> httpx.AsyncClient:
         follow_redirects=True,
     )
 
-def run_chat(prompt: str, model: str = "gpt-3.5-turbo", temperature: float = 0.7):
+def run_chat(prompt: str, model: str = None, temperature: float = 0.7):
     """
     Simple wrapper for OpenAI chat completions.
     """
-    from config import get_openai_config
-    config = get_openai_config()
+    from settings import get_optimizer_config
+    config = get_optimizer_config()
     client = OpenAI(
         api_key=config["api_key"],
         base_url=config["base_url"],
         http_client=build_httpx_client()
     )
     response = client.chat.completions.create(
-        model=model,
+        model=model or config["model_name"],
         messages=[{"role": "user", "content": prompt}],
         temperature=temperature
     )

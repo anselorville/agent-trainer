@@ -12,12 +12,15 @@ import agentlightning as agl
 
 from src.agents.entity_filter import entity_filter_agent
 from src.client.openai_httpx import build_async_httpx_client
-from config import get_openai_config
+from settings import OPTIMIZER_CONFIG, ROLLOUT_CONFIG
 
-openai_config = get_openai_config()
-OPTIMIZER_BASE_URL = openai_config["base_url"]
-OPTIMIZER_API_KEY = openai_config["api_key"]
-OPTIMIZER_MODEL = openai_config["model_name"]
+OPTIMIZER_BASE_URL = OPTIMIZER_CONFIG.base_url
+OPTIMIZER_API_KEY = OPTIMIZER_CONFIG.api_key
+OPTIMIZER_MODEL = OPTIMIZER_CONFIG.model_name
+
+ROLLOUT_BASE_URL = ROLLOUT_CONFIG.base_url
+ROLLOUT_API_KEY = ROLLOUT_CONFIG.api_key
+ROLLOUT_MODEL = ROLLOUT_CONFIG.model_name
 
 def _normalize_sample(item):
     if "input" in item and isinstance(item["input"], dict):
@@ -80,25 +83,23 @@ def main():
 
     config = load_config(config_path)
    
-    rollout_model = args.model or OPTIMIZER_MODEL
-    rollout_base_url = OPTIMIZER_BASE_URL
-    rollout_api_key = OPTIMIZER_API_KEY
-
+    rollout_model_name = args.model or ROLLOUT_MODEL
+    
     train_ds = build_dataset(
         load_jsonl(train_path),
         config["goal"],
         config.get("eval_mode", "llm"),
-        rollout_model,
-        rollout_base_url,
-        rollout_api_key,
+        rollout_model_name,
+        ROLLOUT_BASE_URL,
+        ROLLOUT_API_KEY,
     )
     val_ds = build_dataset(
         load_jsonl(val_path),
         config["goal"],
         config.get("eval_mode", "llm"),
-        rollout_model,
-        rollout_base_url,
-        rollout_api_key,
+        rollout_model_name,
+        ROLLOUT_BASE_URL,
+        ROLLOUT_API_KEY,
     )
 
     algo = agl.APO(

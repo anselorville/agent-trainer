@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 from src.client.openai_httpx import run_chat
-from src.evaluators.data_processor import main as process_ner_result
+from src.workflow.data_processor import main as process_ner_result
 
 GENERATE_MODEL_NAME = "glm-4.5-flash"
 CORRECTING_MODEL_NAME = "glm-4.7"

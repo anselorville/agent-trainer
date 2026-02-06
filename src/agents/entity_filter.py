@@ -1,6 +1,7 @@
 import json
 
 from openai import OpenAI
+from src.workflow.prepare_data import convert_results_to_dict
 
 import agentlightning as agl
 
@@ -29,6 +30,10 @@ def entity_filter_agent(task, prompt_template: agl.PromptTemplate) -> float:
     )
     output = resp.choices[0].message.content
 
+    # 输出是一个结果字符串，需要结合entities还原成json
+    # convert_results_to_dict(entities:dict, api_result: str) 
+    output_json = convert_results_to_dict(entities, output)
+
     eval_mode = task.get("eval_mode", "llm")
     human_score = get_human_score(task)
     if eval_mode == "human":
@@ -38,6 +43,8 @@ def entity_filter_agent(task, prompt_template: agl.PromptTemplate) -> float:
     gold = task.get("gold") or task.get("output")
     if gold_struct is not None or gold is not None:
         return score_with_gold(output_json=output, gold=gold, gold_struct=gold_struct)
+    else:
+        return score_with_gold(output_json=output, gold=gold, gold_struct=output_json)
 
     if human_score is not None:
         return human_score

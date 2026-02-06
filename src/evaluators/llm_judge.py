@@ -1,6 +1,6 @@
 from openai import OpenAI
 
-from config import get_openai_config
+from settings import OPTIMIZER_CONFIG
 from src.client.openai_httpx import build_httpx_client
 
 
@@ -75,10 +75,9 @@ def score_with_gold(output_json, gold=None, gold_struct=None) -> float:
 
 
 def llm_judge(question, entities, output_json, goal):
-    openai_config = get_openai_config()
     client = OpenAI(
-        api_key=openai_config["api_key"],
-        base_url=openai_config["base_url"],
+        api_key=OPTIMIZER_CONFIG.api_key,
+        base_url=OPTIMIZER_CONFIG.base_url,
         http_client=build_httpx_client(),
     )
     prompt = (
@@ -92,7 +91,7 @@ def llm_judge(question, entities, output_json, goal):
         "只输出0~1小数。"
     )
     resp = client.chat.completions.create(
-        model=openai_config["model_name"],
+        model=OPTIMIZER_CONFIG.model_name,
         messages=[{"role": "user", "content": prompt}],
     )
     try:

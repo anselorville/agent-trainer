@@ -19,7 +19,7 @@ An agent optimizer scaffold based on **Agent Lightning**, specifically designed 
 │   ├── datasets/        # Training and validation JSONL files
 │   └── evaluators/      # LLM Judge and Human Feedback logic
 ├── train.py             # Main entry point for training
-├── config.py            # Global configuration management
+├── settings.py          # Global configuration management
 ├── .env                 # Environment variables (API keys, Base URLs)
 └── requirements.txt     # Project dependencies
 ```
