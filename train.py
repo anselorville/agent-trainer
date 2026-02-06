@@ -1,3 +1,6 @@
+from src.utils.windows_patch import apply_patches
+apply_patches()
+
 import argparse
 import json
 import os
@@ -14,12 +17,7 @@ from config import get_openai_config
 openai_config = get_openai_config()
 OPTIMIZER_BASE_URL = openai_config["base_url"]
 OPTIMIZER_API_KEY = openai_config["api_key"]
-OPTIMIZER_MODEL = "glm-4.7"
-
-ROLLOUT_BASE_URL = "http://10.100.167.61:7890/v1"
-ROLLOUT_API_KEY = ""
-ROLLOUT_MODEL = "wind-alice"
-
+OPTIMIZER_MODEL = openai_config["model_name"]
 
 def _normalize_sample(item):
     if "input" in item and isinstance(item["input"], dict):
@@ -73,7 +71,7 @@ def build_dataset(dataset, goal, eval_mode, model, base_url, api_key):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--node", default="entity_filter")
-    parser.add_argument("--model", default="wind-alice")
+    parser.add_argument("--model", default=None)
     args = parser.parse_args()
 
     config_path = f"src/configs/nodes/{args.node}.yaml"
@@ -82,23 +80,25 @@ def main():
 
     config = load_config(config_path)
    
-    rollout_model = args.model
+    rollout_model = args.model or OPTIMIZER_MODEL
+    rollout_base_url = OPTIMIZER_BASE_URL
+    rollout_api_key = OPTIMIZER_API_KEY
 
     train_ds = build_dataset(
         load_jsonl(train_path),
         config["goal"],
         config.get("eval_mode", "llm"),
         rollout_model,
-        ROLLOUT_BASE_URL,
-        ROLLOUT_API_KEY,
+        rollout_base_url,
+        rollout_api_key,
     )
     val_ds = build_dataset(
         load_jsonl(val_path),
         config["goal"],
         config.get("eval_mode", "llm"),
         rollout_model,
-        ROLLOUT_BASE_URL,
-        ROLLOUT_API_KEY,
+        rollout_base_url,
+        rollout_api_key,
     )
 
     algo = agl.APO(
@@ -129,6 +129,7 @@ def main():
     )
 
     best_prompt = algo.get_best_prompt()
+    print("Best Prompt Template:")
     print(best_prompt.template)
 
 

@@ -1,15 +1,13 @@
+import json
 import random
 import copy
-import requests 
-
-import json
+import requests
 from datetime import datetime
-
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from src.client.openai_client import run_chat
-from src.workflow.data_processor_v701 import main as process_ner_result
+
+from src.client.openai_httpx import run_chat
+from src.evaluators.data_processor import main as process_ner_result
 
 GENERATE_MODEL_NAME = "glm-4.5-flash"
 CORRECTING_MODEL_NAME = "glm-4.7"

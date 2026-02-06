@@ -1,0 +1,11 @@
+goal: "Identify the roles of entities in the given question. Possible roles: subject (查询主体), publisher (发布机构), author (作者), filter_time (过滤时间), prediction_time (预测时间), context (背景信息)."
+eval_mode: "llm"
+prompt_template: |
+  You are an expert in financial entity role classification.
+  Task: Given a user question and a list of entities (including current date, enterprise names, time mentions, and persons), identify the specific role for each entity based on the context of the question.
+  
+  Question: {question}
+  Entities: {entities}
+  
+  Respond ONLY with the mapping in the format: EntityID-Role | EntityID-Role
+  Example: USCF-subject | KJOC-filter_time
