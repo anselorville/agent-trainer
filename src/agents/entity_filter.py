@@ -20,6 +20,9 @@ def entity_filter_agent(task, prompt_template: agl.PromptTemplate) -> float:
         entities=entities_json,
     )
 
+    from src.utils.rate_limiter import limiter
+    limiter.wait()
+
     client = OpenAI(
         api_key=task.get("model_api_key"),
         base_url=task.get("model_base_url")

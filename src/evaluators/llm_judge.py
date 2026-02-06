@@ -90,6 +90,10 @@ def llm_judge(question, entities, output_json, goal):
         f"{JUDGE_GUIDE}\n"
         "只输出0~1小数。"
     )
+    
+    from src.utils.rate_limiter import limiter
+    limiter.wait()
+
     resp = client.chat.completions.create(
         model=OPTIMIZER_CONFIG.model_name,
         messages=[{"role": "user", "content": prompt}],

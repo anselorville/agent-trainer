@@ -25,3 +25,6 @@ ROLLOUT_CONFIG = ModelConfig(
     model_name=os.getenv("ROLLOUT_MODEL_NAME", "glm-4.5-flash"),
 )
 
+# Rate Limiting
+LLM_RPM = int(os.getenv("LLM_RPM", "100")) # Requests Per Minute
+LLM_REQUEST_INTERVAL = 60.0 / LLM_RPM if LLM_RPM > 0 else 0
