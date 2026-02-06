@@ -1,6 +1,120 @@
-{"question":"今天阿里的新闻","disambiguated_entities":{"enterprise":[{"name":"阿里巴巴","codes":["9988.HK","BABA.N"]}],"person":[],"time":[]}}
-{"question":"关于今天阿里的新闻","disambiguated_entities":{"enterprise":[{"name":"阿里巴巴","codes":["9988.HK","BABA.N"]}],"person":[],"time":[{"text":"今天"}]}}
-{"question":"中金关于阿里买入评级的研究","disambiguated_entities":{"enterprise":[{"name":"阿里巴巴","codes":["9988.HK","BABA.N"]},{"name":"中金公司","codes":["3908.HK"]}],"person":[],"time":[]}}
-{"question":"贵州茅台2024年年报","disambiguated_entities":{"enterprise":[{"name":"贵州茅台","codes":["600519.SH"]}],"person":[],"time":[{"text":"2024年"}]}}
-{"question":"元旦之后钟才平发表的文章","disambiguated_entities":{"enterprise":[],"person":[{"name":"钟才平"}],"time":[{"text":"元旦之后"}]}}
-{"question":"东方证券关于AI液冷和谷歌液冷的观点","disambiguated_entities":{"enterprise":[{"name":"东方证券","codes":["600958.SH"]},{"name":"谷歌","codes":["GOOGL"]}],"person":[],"time":[]}}
+{"input": {"question": "立讯精密最近公告里对新订单情况怎么披露的", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "USCF", "name": "立讯精密", "codes": ["002475.SZ"]}], "ner_time": [{"id": "KJOC", "raw": "最近"}], "ner_person": []}}}
+{"input": {"question": "帮我找华夏基金旗下管理的产品去年三季度的公告", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "HJB5", "name": "华夏基金", "codes": ["F0700022.00"]}], "ner_time": [{"id": "BWRT", "raw": "去年三季度"}], "ner_person": []}}}
+{"input": {"question": "2025年AI算力拉动光模块利润到底能到啥水平", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "ZA30", "raw": "2025年"}], "ner_person": []}}}
+{"input": {"question": "新能源车产业链中游哪些公司毛利率改善明显", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "列出近期A股回购规模较大的公司及行业分布", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "F9O9", "raw": "近期"}], "ner_person": []}}}
+{"input": {"question": "计划每年三月分红的基金募集说明", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "LAV1", "raw": "每年三月"}], "ner_person": []}}}
+{"input": {"question": "对比A股与港股互联网龙头的估值方法与差异", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "国内光刻胶的上市公司", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "中芯国际最新新闻、公告、市场消息和传闻", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "TVYQ", "name": "中芯国际", "codes": ["688981.SH"]}], "ner_time": [{"id": "CWAI", "raw": "最新"}], "ner_person": []}}}
+{"input": {"question": "华安转债2025年下修条款，债券代码没处理", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "F6K3", "name": "华安转债", "codes": ["600909.SH"]}], "ner_time": [{"id": "TQGV", "raw": "2025年"}], "ner_person": []}}}
+{"input": {"question": "海天味业最近一次公告里的库存变动有多大，招商证券怎么看", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "HUDD", "name": "海天味业", "codes": ["603288.SH"]}, {"id": "MS54", "name": "招商证券", "codes": ["600999.SH"]}], "ner_time": [{"id": "28O7", "raw": "最近"}], "ner_person": []}}}
+{"input": {"question": "2025年10月到2026年1月期间影响AppLovin股价的负面新闻、市场事件、行业变化", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "CLJE", "name": "AppLovin", "codes": ["APP.O"]}], "ner_time": [{"id": "FC9Q", "raw": "2025年10月到2026年1月期间"}], "ner_person": []}}}
+{"input": {"question": "近三个月中概股回流香港上市的进展和案例", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "77WH", "raw": "近三个月"}], "ner_person": []}}}
+{"input": {"question": "腾讯控股在AI上的技术优势", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "RXIQ", "name": "腾讯控股", "codes": ["0700.HK"]}], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "2026年全球半导体资本开支趋势与风险", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "8LDQ", "raw": "2026年"}], "ner_person": []}}}
+{"input": {"question": "新能源电池回收政策更新 对哪些公司最利好", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "最近一年黄金价格上涨的主要驱动因素有哪些", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "0AO6", "raw": "最近一年"}], "ner_person": []}}}
+{"input": {"question": "中证1000跟中证500最近表现差这么多为啥", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "FDET", "raw": "最近"}], "ner_person": []}}}
+{"input": {"question": "东方证券关于AI液冷和谷歌液冷的观点", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "W60K", "name": "东方证券", "codes": ["600958.SH"]}, {"id": "RIAK", "name": "谷歌", "codes": ["GOOGL.O"]}], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "A股风格切换快 量化资金在里面有多大", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "2025年N型复投料和颗粒硅价差", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "TX0R", "raw": "2025年"}], "ner_person": []}}}
+{"input": {"question": "中芯国际最新年报里研发投入占比是多少", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "DS5Q", "name": "中芯国际", "codes": ["688981.SH"]}], "ner_time": [{"id": "YS7R", "raw": "最新"}], "ner_person": []}}}
+{"input": {"question": "京东2025年三季报里自营业务毛利率变化多少", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "14SE", "name": "京东", "codes": ["9618.HK"]}], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "最近中国的大模型开始上市，对中国的大模型公司分别在模型能力、产品、以及收入上进行全面的总结", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "6G1J", "raw": "最近"}], "ner_person": []}}}
+{"input": {"question": "最近两年央企混改进展对资本市场估值影响的案例有哪些", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "CHRU", "raw": "最近两年"}], "ner_person": []}}}
+{"input": {"question": "2026年若出现通胀再抬头，哪些资产配置更具防御性", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "CKZ0", "raw": "2026年"}], "ner_person": []}}}
+{"input": {"question": "阿里巴巴最近财报里对电商业务增速怎么说", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "1SD0", "name": "阿里巴巴", "codes": ["9988.HK"]}], "ner_time": [{"id": "AOL2", "raw": "最近"}], "ner_person": []}}}
+{"input": {"question": "近一年广发证券互联网传媒行业投资策略", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "HJBT", "name": "广发证券", "codes": ["000776.SZ"]}], "ner_time": [{"id": "FHJS", "raw": "近一年"}], "ner_person": []}}}
+{"input": {"question": "2026年全球主要央行货币政策分化对新兴市场资本流向的影响", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "QHDM", "raw": "2026年"}], "ner_person": []}}}
+{"input": {"question": "以中信证券研报为例，新能源电池回收政策更新对相关企业影响", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "X80C", "name": "中信证券", "codes": ["600030.SH"]}], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "2025年美元指数走强，大宗商品是不是就要跌", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "88R5", "raw": "2025年"}], "ner_person": []}}}
+{"input": {"question": "2025年中美AI软实力对比分析", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "QOBX", "raw": "2025年"}], "ner_person": []}}}
+{"input": {"question": "广发证券互联网传媒行业投资观点", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "KA6L", "name": "广发证券", "codes": ["000776.SZ"]}], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "2025年上半年银行净息差变化原因有哪些", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "QX51", "raw": "2025年上半年"}], "ner_person": []}}}
+{"input": {"question": "2025年公募基金在科技成长风格上的配置变化趋势", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "0V7N", "raw": "2025年"}], "ner_person": []}}}
+{"input": {"question": "宁德时代最近一次公告里有提到电池回收业务吗", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "1DOB", "name": "宁德时代", "codes": ["300750.SZ"]}], "ner_time": [{"id": "J69B", "raw": "最近"}], "ner_person": []}}}
+{"input": {"question": "2025年国债收益率曲线倒挂的原因和含义", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "GQCZ", "raw": "2025年"}], "ner_person": []}}}
+{"input": {"question": "以上交所公告为例，债券产品下修条款怎么写", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "隆基绿能近期公告里有没有提到硅片价格变化", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "YAAB", "name": "隆基绿能", "codes": ["601012.SH"]}], "ner_time": [{"id": "1A2Q", "raw": "近期"}], "ner_person": []}}}
+{"input": {"question": "关于宁德时代的固态电池的进展和技术专利情况", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "6HZD", "name": "宁德时代", "codes": ["300750.SZ"]}], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "2025年中概股回港上市这事现在进度到哪了", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "0YC4", "raw": "2025年"}, {"id": "TH9P", "raw": "现在"}], "ner_person": []}}}
+{"input": {"question": "东方财富最新研报里对券商板块景气度怎么看，海通证券怎么说", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "VL04", "name": "东方财富", "codes": ["300059.SZ"]}, {"id": "NB2R", "name": "海通证券", "codes": ["600837.SH"]}], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "中芯国际最新研报里对产能利用率的判断是什么", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "H3XD", "name": "中芯国际", "codes": ["688981.SH"]}], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "医药哪个细分三季度超预期 主要因为啥", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "SEC9", "raw": "三季度"}], "ner_person": []}}}
+{"input": {"question": "工商银行最新年报中对不良贷款率趋势的表述", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "YUGE", "name": "工商银行", "codes": ["601398.SH"]}], "ner_time": [{"id": "2VCU", "raw": "最新"}], "ner_person": []}}}
+{"input": {"question": "最近5年恒生电子年报告中关于战略的描述", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "ZSSN", "name": "恒生电子", "codes": ["600570.SH"]}], "ner_time": [{"id": "K8P7", "raw": "最近5年"}], "ner_person": []}}}
+{"input": {"question": "苹果公司2025财年年报里服务业务增长率是多少", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "4TQ1", "name": "苹果公司", "codes": ["AAPL.O"]}], "ner_time": [{"id": "OFZX", "raw": "2025财年"}], "ner_person": []}}}
+{"input": {"question": "2025年中小市值风格回暖时量化资金参与度怎么衡量", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "X0G1", "raw": "2025年"}], "ner_person": []}}}
+{"input": {"question": "浙商证券对2026年股市预测的策略报告总结", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "OZX0", "name": "浙商证券", "codes": ["601878.SH"]}], "ner_time": [{"id": "LFEV", "raw": "2026年"}], "ner_person": []}}}
+{"input": {"question": "2025年半导体周期复苏的关键指标与验证信号有哪些", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "PONM", "raw": "2025年"}], "ner_person": []}}}
+{"input": {"question": "中金公司最近的策略报告里对A股风格的判断", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "RRGB", "name": "中金公司", "codes": ["601995.SH"]}], "ner_time": [{"id": "ZBFC", "raw": "最近"}], "ner_person": []}}}
+{"input": {"question": "恒生电子近五年年报中的关于战略规划的内容", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "K3FA", "name": "恒生电子", "codes": ["600570.SH"]}], "ner_time": [{"id": "LU4V", "raw": "近五年"}], "ner_person": []}}}
+{"input": {"question": "万和电气深度研究报告，包括公司基本面、财务数据、行业地位、竞争优势、风险因素等内容", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "GSD6", "name": "万和电气", "codes": ["002543.SZ"]}], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "华泰证券最新行业报告里对AI算力链的结论", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "JP73", "name": "华泰证券", "codes": ["601688.SH"]}], "ner_time": [{"id": "1ACH", "raw": "最新"}], "ner_person": []}}}
+{"input": {"question": "2025年跨境电商平台盈利模式变化对物流企业有哪些影响", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "AQFV", "raw": "2025年"}], "ner_person": []}}}
+{"input": {"question": "根据看空和看多腾讯在AI领域布局这个理由来对腾讯股价下调和上调的研报分类总结", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "8VQA", "name": "腾讯", "codes": ["0700.HK"]}, {"id": "10LH", "name": "腾讯", "codes": ["0700.HK"]}], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "最近半年国内REITs发行节奏与收益率走势", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "TVZF", "raw": "最近半年"}], "ner_person": []}}}
+{"input": {"question": "华夏基金去年三季度 销售管理的产品中 ，补充公告修正", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "EXWE", "name": "华夏基金", "codes": ["F0700022.00"]}], "ner_time": [{"id": "PLIG", "raw": "去年三季度"}], "ner_person": []}}}
+{"input": {"question": "比亚迪最新投资者关系活动记录里对海外销量有什么说法", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "SXXX", "name": "比亚迪", "codes": ["002594.SZ"]}], "ner_time": [{"id": "IKFD", "raw": "最新"}], "ner_person": []}}}
+{"input": {"question": "AI应用火成这样 相关公司收入真落地了吗", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "沪光股份高压线束剖视图带塑料护套的研报", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "NB3A", "name": "沪光股份", "codes": ["605333.SH"]}], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "华夏基金去年三季度有几只基金产品发布了更正公告", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "JTMB", "name": "华夏基金", "codes": ["F0700022.00"]}], "ner_time": [{"id": "DKZO", "raw": "去年三季度"}], "ner_person": []}}}
+{"input": {"question": "沪光股份2015-3Q25营收及增速", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "SGLS", "name": "沪光股份", "codes": ["605333.SH"]}], "ner_time": [{"id": "A8RP", "raw": "2015-3Q25"}], "ner_person": []}}}
+{"input": {"question": "电池材料的中间材料有哪些，哪些上市公司在生产这些材料", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "2025年产业链去库存对制造业PMI的领先意义", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "YGDG", "raw": "2025年"}], "ner_person": []}}}
+{"input": {"question": "美的集团最新财报里海外收入占比是多少", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "JIT0", "name": "美的集团", "codes": ["000333.SZ"]}], "ner_time": [{"id": "NN0L", "raw": "最新"}], "ner_person": []}}}
+{"input": {"question": "关于今天中国股市盘面解读的所有新闻和报告", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "34EJ", "raw": "今天"}], "ner_person": []}}}
+{"input": {"question": "沪光股份股权结构示意图", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "SUB7", "name": "沪光股份", "codes": ["605333.SH"]}], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "RMB国际化推进对银行业务增量到底有多少", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "IFGF", "name": "RMB", "codes": []}], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "恒生电子近五年的年报中关于战略的描述", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "NCCG", "name": "恒生电子", "codes": ["600570.SH"]}], "ner_time": [{"id": "K54T", "raw": "近五年"}], "ner_person": []}}}
+{"input": {"question": "中国移动最近公告里提到5G资本开支目标了吗", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "UP7F", "name": "中国移动", "codes": ["600941.SH"]}], "ner_time": [{"id": "E3KV", "raw": "最近"}], "ner_person": []}}}
+{"input": {"question": "贵州茅台2025年半年报对渠道改革的描述是什么", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "5R8H", "name": "贵州茅台", "codes": ["600519.SH"]}], "ner_time": [{"id": "A98N", "raw": "2025年半年"}], "ner_person": []}}}
+{"input": {"question": "沪光股份的股权结构示意图", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "02LH", "name": "沪光股份", "codes": ["605333.SH"]}], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "比较2025年新能源与传统能源板块估值分化的核心驱动", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "WT05", "raw": "2025年"}], "ner_person": []}}}
+{"input": {"question": "腾讯控股最新公告里对AI投入规模有没有披露", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "GC38", "name": "腾讯控股", "codes": ["0700.HK"]}], "ner_time": [{"id": "FLXV", "raw": "最新"}], "ner_person": []}}}
+{"input": {"question": "中金公司关于光伏和储能的研究报告", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "R1ZP", "name": "中金公司", "codes": ["601995.SH"]}], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "近半年广发证券互联网传媒行业投资策略", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "KE34", "name": "广发证券", "codes": ["000776.SZ"]}], "ner_time": [{"id": "QW04", "raw": "近半年"}], "ner_person": []}}}
+{"input": {"question": "2025年消费电子新品周期对供应链利润弹性有多大", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "UQ37", "raw": "2025年"}], "ner_person": []}}}
+{"input": {"question": "国家统计局月度数据里中国动力电池和其他电池产量的累计值及累计同比数据", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "基金产品公告中有固定分红的描述(没有公告Chunk)", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "PVDF中间材料的生产厂商，哪些是上市公司", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "中银国际对房地产链条复苏的研报结论是什么", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "G5ZZ", "name": "中银国际", "codes": ["601696.SH"]}], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "2025年美元指数走强对大宗商品价格的影响路径", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "2IMR", "raw": "2025年"}], "ner_person": []}}}
+{"input": {"question": "列举2025年三季度业绩超预期的医药子行业及原因", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "XYUZ", "raw": "2025年三季度"}], "ner_person": []}}}
+{"input": {"question": "腾讯控股在AI上的技术优势相关的新闻", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "YLJW", "name": "腾讯控股", "codes": ["0700.HK"]}], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "2025年AI app的活跃度", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "A92K", "raw": "2025年"}], "ner_person": []}}}
+{"input": {"question": "中国平安最新年报里对寿险新单增长怎么解释，东方证券怎么解读", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "VADC", "name": "中国平安", "codes": ["601318.SH"]}, {"id": "CK0H", "name": "东方证券", "codes": ["600958.SH"]}], "ner_time": [{"id": "9GS0", "raw": "最新"}], "ner_person": []}}}
+{"input": {"question": "回顾今天的盘面", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "J1OA", "raw": "今天"}], "ner_person": []}}}
+{"input": {"question": "华夏基金3季度做了多少个产品补充公告，总结一下", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "0ZNW", "name": "华夏基金", "codes": ["F0700022.00"]}], "ner_time": [{"id": "82HT", "raw": "3季度"}], "ner_person": []}}}
+{"input": {"question": "中芯国际今日卖出资金多的原因及相关消息", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "IJNC", "name": "中芯国际", "codes": ["688981.SH"]}], "ner_time": [{"id": "TGYP", "raw": "今日"}], "ner_person": []}}}
+{"input": {"question": "生产电池中间材料的上市公司名单", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "长盈2023年第二期个人汽车抵押贷款资产支持证券 光大银行", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "OY51", "name": "长盈", "codes": []}, {"id": "YRRK", "name": "光大银行", "codes": ["601818.SH"]}], "ner_time": [{"id": "11YM", "raw": "2023年第二期"}], "ner_person": []}}}
+{"input": {"question": "2025年地方政府专项债发行节奏与基建投资的关系", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "246J", "raw": "2025年"}], "ner_person": []}}}
+{"input": {"question": "2025年地方专项债发多了会不会带来债务风险", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "0K7F", "raw": "2025年"}], "ner_person": []}}}
+{"input": {"question": "药明康德最新财报里海外业务收入占比是多少", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "J9RH", "name": "药明康德", "codes": ["603259.SH"]}], "ner_time": [{"id": "DW58", "raw": "最新"}], "ner_person": []}}}
+{"input": {"question": "2025年消费复苏背景下可选消费板块的景气度", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "DP6I", "raw": "2025年"}], "ner_person": []}}}
+{"input": {"question": "东方证券关于AI液冷和液冷的观点", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "XFQ5", "name": "东方证券", "codes": ["600958.SH"]}], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "2025年万得金融终端API使用手册", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "3ZPM", "name": "万得", "codes": []}], "ner_time": [{"id": "1S8O", "raw": "2025年"}], "ner_person": []}}}
+{"input": {"question": "今年券商投行收入怎么突然好起来了", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "F46T", "raw": "今年"}], "ner_person": []}}}
+{"input": {"question": "2026年一季度人民币汇率波动对出口板块的影响是什么", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "MU6B", "raw": "2026年一季度"}], "ner_person": []}}}
+{"input": {"question": "公募基金对不同市值区间股票的配置比例", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "出口链公司一季度是不是吃到汇率红利", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "4282", "raw": "一季度"}], "ner_person": []}}}
+{"input": {"question": "给出近期人民币存款利率下调对银行股估值的影响", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "VSVX", "raw": "近期"}], "ner_person": []}}}
+{"input": {"question": "2025年上海关于建立开源生态的实施意见", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "6QX3", "raw": "2025年"}], "ner_person": []}}}
+{"input": {"question": "2025年下半年光伏价格战对组件企业现金流压力如何评估", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "71V4", "raw": "2025年下半年"}], "ner_person": []}}}
+{"input": {"question": "中芯国际7nm良率多少", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "D6V7", "name": "中芯国际", "codes": ["688981.SH"]}], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "以华泰证券研报为例，AI算力需求增长对光模块板块盈利影响如何", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "R34T", "name": "华泰证券", "codes": ["601688.SH"]}], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "纳斯达克100指数在2026年1月20日有哪些成分股调整？", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "M9RZ", "raw": "2026年1月20日"}], "ner_person": []}}}
+{"input": {"question": "人民币国际化进程对跨境支付与银行业务的潜在增量", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "以申万宏源研报为例，龙头券商资本约束变化对投行业务扩张的影响", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "XZ24", "name": "申万宏源", "codes": ["000166.SZ"]}], "ner_time": [], "ner_person": []}}}
+{"input": {"question": "近期北向资金行业偏好变化及其对A股风格切换的启示", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "XCXP", "raw": "近期"}], "ner_person": []}}}
+{"input": {"question": "汇总近期美联储议息会议纪要中的关键信号", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "YKZD", "raw": "近期"}], "ner_person": []}}}
+{"input": {"question": "2025年国债收益率曲线又变平了说明啥", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "2SSL", "raw": "2025年"}], "ner_person": []}}}
+{"input": {"question": "水滴公司2025年第二季度业绩电话会transscript", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "1H79", "name": "水滴公司", "codes": ["WDH.N"]}], "ner_time": [{"id": "7KUG", "raw": "2025年第二季度"}], "ner_person": []}}}
+{"input": {"question": "格力电器最近一次回购公告规模多大", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "FYQ5", "name": "格力电器", "codes": ["000651.SZ"]}], "ner_time": [{"id": "RPM0", "raw": "最近"}], "ner_person": []}}}
+{"input": {"question": "FACTSET 2025年披露的过去五年现金流、发债原因和收购活动", "entities": {"current_date": "2026-02-06", "ner_enterprise": [{"id": "W1CO", "name": "FACTSET", "codes": ["FDS.N"]}], "ner_time": [{"id": "AR6O", "raw": "2025年"}, {"id": "2GD0", "raw": "过去五年"}], "ner_person": []}}}
+{"input": {"question": "2025年消费电子新品周期对供应链企业利润弹性影响", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "CR20", "raw": "2025年"}], "ner_person": []}}}
+{"input": {"question": "前七大券商2026年股市预测的策略报告总结", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "QDJD", "raw": "2026年"}], "ner_person": []}}}
+{"input": {"question": "证监会最近的处罚函", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "F78A", "raw": "最近"}], "ner_person": []}}}
+{"input": {"question": "﻿2025年N型复投料/颗粒硅价差的图片", "entities": {"current_date": "2026-02-06", "ner_enterprise": [], "ner_time": [{"id": "9OQQ", "raw": "2025年"}], "ner_person": []}}}
