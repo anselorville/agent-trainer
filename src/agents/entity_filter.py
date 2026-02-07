@@ -15,10 +15,33 @@ def entity_filter_agent(task, prompt_template: agl.PromptTemplate) -> float:
         raise ValueError("Missing entities in task payload")
 
     entities_json = json.dumps(entities, ensure_ascii=False)
-    prompt = prompt_template.format(
-        question=task["question"],
-        entities=entities_json,
-    )
+    
+    # Define all known variables that might be used in prompt templates
+    # APO may generate prompts with additional variables, so we provide safe defaults
+    valid_roles = """subject (查询主体), publisher (发布机构), author (作者), filter_time (过滤时间), prediction_time (预测时间), context (背景信息)"""
+    
+    format_kwargs = {
+        "question": task["question"],
+        "entities": entities_json,
+        # Fallback values for variables APO might introduce
+        "valid_roles": valid_roles,
+        "roles": valid_roles,
+        "role_list": valid_roles,
+        "available_roles": valid_roles,
+        "task": task.get("goal", "Identify entity roles"),
+        "goal": task.get("goal", "Identify entity roles"),
+        "instructions": "Assign exactly one role to each entity with a confidence score.",
+        "format": "EntityID-Role-Confidence | EntityID-Role-Confidence",
+        "example": "USCF-subject-0.9 | KJOC-filter_time-0.8",
+    }
+    
+    try:
+        prompt = prompt_template.format(**format_kwargs)
+    except KeyError as e:
+        # If there's still a missing key, add it with a placeholder and retry
+        missing_key = str(e).strip("'")
+        format_kwargs[missing_key] = f"[{missing_key}]"
+        prompt = prompt_template.format(**format_kwargs)
 
     from src.utils.rate_limiter import limiter
     limiter.wait()

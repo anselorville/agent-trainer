@@ -88,34 +88,81 @@ def build_dataset(dataset, goal, eval_mode, model, base_url, api_key):
     return dataset
 
 
-class ProgressMonitor:
-    """Background thread to periodically print alive status."""
+class PromptMonitor:
+    """Background thread that monitors APO for new best prompts and saves them immediately."""
     
-    def __init__(self, interval_seconds: int = 60):
-        self.interval = interval_seconds
+    def __init__(self, algo: agl.APO, config_path: str, config: dict, check_interval: int = 30):
+        self.algo = algo
+        self.config_path = config_path
+        self.config = config
+        self.check_interval = check_interval
         self.running = False
         self.thread = None
         self.start_time = None
+        self.last_saved_template = config.get("prompt_template", "")
+        self.best_score = 0.0
+        self.save_count = 0
     
     def start(self):
         self.running = True
         self.start_time = time.time()
         self.thread = threading.Thread(target=self._run, daemon=True)
         self.thread.start()
+        log(f"📡 Prompt monitor started (checking every {self.check_interval}s)")
     
     def stop(self):
         self.running = False
         if self.thread:
-            self.thread.join(timeout=2)
+            self.thread.join(timeout=5)
+        log("📡 Prompt monitor stopped")
     
     def _run(self):
         while self.running:
-            time.sleep(self.interval)
-            if self.running:
-                elapsed = time.time() - self.start_time
-                minutes = int(elapsed // 60)
-                seconds = int(elapsed % 60)
-                log(f"⏳ Training in progress... (elapsed: {minutes}m {seconds}s)")
+            time.sleep(self.check_interval)
+            if not self.running:
+                break
+            
+            elapsed = time.time() - self.start_time
+            minutes = int(elapsed // 60)
+            seconds = int(elapsed % 60)
+            
+            try:
+                # Try to get the current best prompt from APO
+                best_prompt = self.algo.get_best_prompt()
+                if best_prompt and best_prompt.template:
+                    current_template = best_prompt.template
+                    
+                    # Check if this is a new/different prompt
+                    if current_template != self.last_saved_template:
+                        self.save_count += 1
+                        self.last_saved_template = current_template
+                        
+                        # Update config and save
+                        self.config["prompt_template"] = current_template
+                        save_config(self.config_path, self.config)
+                        
+                        # Also save a versioned backup
+                        backup_path = f"{self.config_path.replace('.yaml', '')}_v{self.save_count}.yaml"
+                        save_config(backup_path, self.config)
+                        
+                        log(f"🎉 NEW BEST PROMPT DETECTED! Saved as v{self.save_count}")
+                        log(f"   📁 Main: {self.config_path}")
+                        log(f"   📁 Backup: {backup_path}")
+                        log(f"   ⏱️  Elapsed: {minutes}m {seconds}s")
+                        
+                        # Print first 200 chars of new prompt
+                        preview = current_template[:200].replace('\n', ' ')
+                        log(f"   📝 Preview: {preview}...")
+                    else:
+                        log(f"⏳ [{minutes}m {seconds}s] Monitoring... (no new prompt yet, saves: {self.save_count})")
+                else:
+                    log(f"⏳ [{minutes}m {seconds}s] Monitoring... (no best prompt available yet)")
+                    
+            except ValueError as e:
+                # get_best_prompt() raises ValueError if no best prompt yet
+                log(f"⏳ [{minutes}m {seconds}s] Monitoring... (waiting for first evaluation)")
+            except Exception as e:
+                log(f"⚠️ [{minutes}m {seconds}s] Monitor error: {e}")
 
 
 def main():
@@ -124,8 +171,8 @@ def main():
     parser.add_argument("--model", default=None)
     parser.add_argument("--rounds", type=int, default=3, 
                         help="Number of optimization rounds (beam_rounds)")
-    parser.add_argument("--monitor-interval", type=int, default=60, 
-                        help="Seconds between progress heartbeat messages")
+    parser.add_argument("--monitor-interval", type=int, default=30, 
+                        help="Seconds between prompt checks")
     args = parser.parse_args()
 
     config_path = f"src/configs/nodes/{args.node}.yaml"
@@ -193,11 +240,17 @@ def main():
         adapter=agl.TraceToMessages(),
     )
 
-    log("Starting training...")
+    log(f"Starting training with {args.rounds} rounds...")
+    log(f"Prompt will be auto-saved every time a better version is found!")
     log("=" * 60)
     
-    # Start progress monitor
-    monitor = ProgressMonitor(interval_seconds=args.monitor_interval)
+    # Start prompt monitor (checks for new best prompts and saves them)
+    monitor = PromptMonitor(
+        algo=algo,
+        config_path=config_path,
+        config=config,
+        check_interval=args.monitor_interval
+    )
     monitor.start()
     
     try:
@@ -215,30 +268,24 @@ def main():
         monitor.stop()
         log("=" * 60)
         log("Training session ended.")
+        log(f"Total prompt versions saved: {monitor.save_count}")
         
-        # Try to get and save the best prompt
+        # Final save attempt
         try:
             best_prompt = algo.get_best_prompt()
             if best_prompt and best_prompt.template:
-                log("✅ Best prompt retrieved successfully!")
+                if best_prompt.template != monitor.last_saved_template:
+                    config["prompt_template"] = best_prompt.template
+                    save_config(config_path, config)
+                    log(f"💾 Final best prompt saved to: {config_path}")
+                
+                log("=" * 60)
+                log("FINAL BEST PROMPT:")
                 log("-" * 40)
                 print(best_prompt.template)
                 log("-" * 40)
-                
-                # Save to config file
-                config["prompt_template"] = best_prompt.template
-                save_config(config_path, config)
-                log(f"💾 Best prompt saved to: {config_path}")
-                
-                # Also save a backup with timestamp
-                backup_path = f"src/configs/nodes/{args.node}_best_{datetime.now().strftime('%Y%m%d_%H%M%S')}.yaml"
-                save_config(backup_path, config)
-                log(f"💾 Backup saved to: {backup_path}")
-            else:
-                log("⚠️ No best prompt available.")
         except Exception as e:
-            log(f"⚠️ Could not retrieve best prompt: {e}")
-            log("The original prompt in the config file remains unchanged.")
+            log(f"⚠️ Could not retrieve final best prompt: {e}")
 
 
 if __name__ == "__main__":
