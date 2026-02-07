@@ -7,5 +7,5 @@ prompt_template: |
   Question: {question}
   Entities: {entities}
   
-  Respond ONLY with the mapping in the format: EntityID-Role | EntityID-Role
-  Example: USCF-subject | KJOC-filter_time
+  Respond ONLY with the mapping in the format: EntityID-Role-Confidence | EntityID-Role-Confidence
+  Example: USCF-subject-0.9 | KJOC-filter_time-0.8

@@ -8,7 +8,7 @@ def build_httpx_client() -> httpx.Client:
     Builds a synchronous httpx client.
     """
     return httpx.Client(
-        timeout=1200.0,
+        timeout=300.0,
         follow_redirects=True,
     )
 
@@ -17,7 +17,7 @@ def build_async_httpx_client() -> httpx.AsyncClient:
     Builds an asynchronous httpx client.
     """
     return httpx.AsyncClient(
-        timeout=1200.0,
+        timeout=300.0,
         follow_redirects=True,
     )
 
