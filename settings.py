@@ -12,6 +12,11 @@ class ModelConfig:
         self.base_url = base_url
         self.model_name = model_name
 
+BASE_CONFIG = ModelConfig(
+    api_key=os.getenv("LLM_API_KEY"),
+    base_url=os.getenv("LLM_BASE_URL"),
+    model_name=os.getenv("LLM_MODEL_NAME", "glm-4.7"),
+)
 
 OPTIMIZER_CONFIG = ModelConfig(
     api_key=os.getenv("OPTIMIZER_API_KEY"),
