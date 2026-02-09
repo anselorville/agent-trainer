@@ -1,50 +1,48 @@
-goal: 'Identify the roles of entities in the given question. Possible roles: subject
-  (查询主体), publisher (发布机构), author (作者), filter_time (过滤时间), prediction_time (预测时间),
-  context (背景信息).'
+node_id: entity_filter
+goal: >
+  根据金融问答场景下的用户问句与NER识别的结果，判断问句中出现的公司/机构、人物、时间实体的角色，并输出符合格式的结果，最终的目标是使用这些实体在ES中构建过滤类型的条件或者关键词查询类型的条件。
+  需要注意的是，这些实体的角色既可能是过滤条件，也可能是内容描述的关键词，所以判断的准确性直接影响ES查询的效果。
+prompt_template: |
+  ## 任务描述
+  你是一个专业的金融信息处理专家，专门负责识别金融问句中出现的实体的在ES存储的信息中的角色，并输出符合格式的结果。
+  现在有3类实体：企业、时间、人物。请根据以下定义识别实体：
+  - 企业：指公司、机构等组织实体，通常包含公司的全称/简称(name)、股票代码(codes)等信息。
+  - 时间：指与时间相关的实体，可以是具体日期、时间段、时间点等文字描述。
+  - 人物：指与人相关的实体，一般指人物姓名。
+  这些实体在问句中在ES中可能会有歧义，需要准确识别其角色。请根据以下规则处理实体：
+  1. 公司/机构实体角色
+  - **subject**: 查询主体，用户想查找关于该公司的信息
+    - 示例: "腾讯的营收情况" → 腾讯是subject
+  - **publisher**: 发布机构，用户想查找该机构发布的文档
+    - 示例: "中信证券的研报" → 中信证券是publisher
+
+  2. 人物实体角色
+  - **author**: 作者，用户想查找该人撰写的文档
+    - 示例: "张三写的研报" → 张三是author
+  - **subject**: 主体，用户想查找关于该人的信息
+    - 示例: "关于马云的新闻" → 马云是subject
+
+  3. 时间实体角色（最关键）
+  - **content_descriptor**: 内容描述时间，时间是文档内容的一部分
+    - 示例: "2024年年报" → 2024年描述的是年报的周期，不是发布时间，金融场景下对于周期性纰漏信息，时间通常是描述性的内容，而非过滤条件
+  - **filter_time**: 过滤时间，用于过滤文档发布日期，注意：多数口语化表达的问句中，时间都可以用来作为过滤使用
+    - 示例: "2024年发布的公告" → 2024年是发布时间
+  - **prediction_time**: 预测时间，未来时间引用
+    - 示例: "2027年的市场趋势" → 2027年是预测对象
+  - **context**: 上下文时间，相对时间表达
+    - 示例: "最近的研报" → "最近"是模糊时间范围，视语境中的信息对时间的敏感度设置默认值为近一个月/近一个星期
+
+  ## Input
+  用户的问句：{question}
+  识别的实体：
+  {entities}
+
+  ## 输出格式要求
+  输出形如：[id]-[role]-[confidence]|[id]-[role]-[confidence]|...
+  其中，id就是输入实体中的id，role是根据上述规则识别的实体角色，confidence是一个0-10之间的评分，表示模型对该角色判断的置信度。
+  输出值时不用[]包裹，不同实体之间的输出用|分隔，id、role、confidence之间用-连接。
+
+  ## Output
+
+output_schema: entity_filter_v1
 eval_mode: llm
-prompt_template: '### PROMPT
-
-
-  You are an expert in financial entity role classification.
-
-  Task: Classify the role of each entity provided in the input `{entities}` based
-  on the context.
-
-
-  Valid Roles:
-
-  - `subject`: The main financial instrument, company, or asset being analyzed.
-
-  - `publisher`: The institution, bank, analyst, or entity providing the opinion or
-  report.
-
-  - `filter_time`: Date, time range, or specific time mention used to narrow the scope.
-
-
-  Question: {question}
-
-  Entities: {entities}
-
-
-  Instructions:
-
-  1. Only classify the entities explicitly listed in the input `{entities}`. Do not
-  extract or hallucinate entities from the `{question}`.
-
-  2. Assign a valid role to each entity based on the definitions above.
-
-  3. Assign a confidence score between 0.0 and 1.0.
-
-  4. Order the output entities by role priority: Subject -> Publisher -> Filter Time.
-
-
-  Example:
-
-  Question: How does Goldman Sachs view Apple''s performance in Q1?
-
-  Entities: Goldman Sachs, Apple, Q1
-
-  Output: Apple-subject-0.9 | Goldman Sachs-publisher-0.9 | Q1-filter_time-0.8
-
-
-  Respond ONLY with the mapping in the format: EntityID-Role-Confidence | EntityID-Role-Confidence'
