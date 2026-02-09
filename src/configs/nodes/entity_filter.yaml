@@ -1,4 +1,5 @@
 node_id: entity_filter
+eval_mode: llm
 goal: >
   根据金融问答场景下的用户问句与NER识别的结果，判断问句中出现的公司/机构、人物、时间实体的角色，并输出符合格式的结果，最终的目标是使用这些实体在ES中构建过滤类型的条件或者关键词查询类型的条件。
   需要注意的是，这些实体的角色既可能是过滤条件，也可能是内容描述的关键词，所以判断的准确性直接影响ES查询的效果。
@@ -43,6 +44,3 @@ prompt_template: |
   输出值时不用[]包裹，不同实体之间的输出用|分隔，id、role、confidence之间用-连接。
 
   ## Output
-
-output_schema: entity_filter_v1
-eval_mode: llm

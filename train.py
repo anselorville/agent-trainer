@@ -169,7 +169,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--node", default="entity_filter")
     parser.add_argument("--model", default=None)
-    parser.add_argument("--rounds", type=int, default=3, 
+    parser.add_argument("--rounds", type=int, default=1, 
                         help="Number of optimization rounds (beam_rounds)")
     parser.add_argument("--monitor-interval", type=int, default=30, 
                         help="Seconds between prompt checks")
