@@ -171,6 +171,10 @@ def main():
     parser.add_argument("--model", default=None)
     parser.add_argument("--rounds", type=int, default=1, 
                         help="Number of optimization rounds (beam_rounds)")
+    parser.add_argument("--beam-width", type=int, default=None,
+                        help="APO beam_width: top-k prompts per round. Default: 1 when rounds=1, else 4 (avoids 'Duplicated beam index' when beam has fewer prompts than width)")
+    parser.add_argument("--branch-factor", type=int, default=4,
+                        help="APO branch_factor: new candidates per parent (default 4)")
     parser.add_argument("--monitor-interval", type=int, default=30, 
                         help="Seconds between prompt checks")
     args = parser.parse_args()
@@ -216,7 +220,10 @@ def main():
         ROLLOUT_API_KEY,
     )
 
-    log(f"Initializing APO algorithm with {args.rounds} rounds...")
+    # When rounds=1, beam has only the seed prompt; beam_width>1 causes APO to replicate it
+    # and log "Duplicated beam index". Use beam_width=1 for single-round to avoid that.
+    beam_width = args.beam_width if args.beam_width is not None else (1 if args.rounds == 1 else 4)
+    log(f"Initializing APO algorithm: rounds={args.rounds}, beam_width={beam_width}, branch_factor={args.branch_factor}")
     algo = agl.APO(
         AsyncOpenAI(
             api_key=OPTIMIZER_API_KEY,
@@ -226,6 +233,8 @@ def main():
         gradient_model=OPTIMIZER_MODEL,
         apply_edit_model=OPTIMIZER_MODEL,
         beam_rounds=args.rounds,
+        beam_width=beam_width,
+        branch_factor=args.branch_factor,
     )
     
     trainer = agl.Trainer(
